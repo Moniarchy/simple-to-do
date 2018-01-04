@@ -1,10 +1,16 @@
 const express = require('express')
 const router = express.Router()
-const createNewTodo = require('../queries')
+const { createNewTodo, getAllTodos } = require('../queries')
 
 /* GET home page. */
 router.get('/', function(request, response) {
-  response.render('index', { title: 'Express' })
+  getAllTodos()
+  .then(function(todos) {
+    response.render('index', {todos})
+  })
+  .catch(function(error) {
+    response.json(error.message)
+  })
 })
 
 router.get('/todo/createnew', function(request, response) {

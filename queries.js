@@ -9,4 +9,8 @@ const createNewTodo = function(name, description) {
   return db.none('INSERT INTO todos(name, description) VALUES($1, $2)', [name, description])
 }
 
-module.exports = createNewTodo
+const getAllTodos = function() {
+  return db.any('SELECT * FROM todos')
+}
+
+module.exports = {createNewTodo, getAllTodos}

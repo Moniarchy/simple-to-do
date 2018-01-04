@@ -4,10 +4,10 @@
   - [X] An async database function that creates a new record exists
   - [X] A form in `createnew.pug` exists and connects to our POST route
 
-- [ ] A user can see all of their to do items
-  - [ ] A GET `/todo/all` route exists that renders data for all todos
-  - [ ] An async database function that retrieves all records exists
-  - [ ] A view that displays all of the data passed to it from the route
+- [X] A user can see all of their to do items
+  - [X] A GET `/` route exists that renders data for all todos
+  - [X] An async database function that retrieves all records exists
+  - [X] A view that displays all of the data passed to it from the route
 
 - [ ] A user can see just one of their to do items
   - [ ] A GET `/todo/:id` route exists that renders data for all todos
