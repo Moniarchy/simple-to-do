@@ -13,4 +13,8 @@ const getAllTodos = function() {
   return db.any('SELECT * FROM todos')
 }
 
-module.exports = {createNewTodo, getAllTodos}
+const getOneTodo = function(id) {
+  return db.one('SELECT * FROM todos WHERE id = $1', [id])
+}
+
+module.exports = {createNewTodo, getAllTodos, getOneTodo}

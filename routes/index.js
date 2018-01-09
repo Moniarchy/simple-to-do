@@ -32,7 +32,7 @@ router.get('/todo/:id', function(request, response) {
   const id = request.params.id
 
   getOneTodo(id)
-  .then(response.render('todopage'))
+  .then(response.render('todopage', {todo}))
   .catch(function(error) {
     response.json(error.message)
   })
