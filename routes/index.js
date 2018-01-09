@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const { createNewTodo, getAllTodos, getOneTodo } = require('../queries')
 
-/* GET home page. */
 router.get('/', function(request, response) {
   getAllTodos()
   .then(function(todos) {
@@ -14,7 +13,6 @@ router.get('/', function(request, response) {
 })
 
 router.get('/todo/createnew', function(request, response) {
-  //respond in some way
   response.render('createnew')
 })
 
@@ -22,7 +20,9 @@ router.post('/todo/createnew', function(request, response) {
   const { name, description } = request.body
 
   createNewTodo(name, description)
-  .then(response.redirect('/'))
+  .then(function(todo) {
+    response.redirect('/')
+  })
   .catch(function(error) {
     response.json(error.message)
   })
