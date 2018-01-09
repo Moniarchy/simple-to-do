@@ -36,7 +36,8 @@ router.get('/todo/:id', function(request, response) {
     response.render('todopage', {todo})
   })
   .catch(function(error) {
-    response.json(error.message)
+    console.log(error.message)
+    response.json("The item that you asked for does not exist. Please use the id of an item that does exist.")
   })
 })
 
