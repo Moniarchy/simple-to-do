@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { createNewTodo, getAllTodos } = require('../queries')
+const { createNewTodo, getAllTodos, getOneTodo } = require('../queries')
 
 /* GET home page. */
 router.get('/', function(request, response) {
@@ -23,6 +23,16 @@ router.post('/todo/createnew', function(request, response) {
 
   createNewTodo(name, description)
   .then(response.redirect('/'))
+  .catch(function(error) {
+    response.json(error.message)
+  })
+})
+
+router.get('/todo/:id', function(request, response) {
+  const id = request.params.id
+
+  getOneTodo(id)
+  .then(response.render('todopage'))
   .catch(function(error) {
     response.json(error.message)
   })
